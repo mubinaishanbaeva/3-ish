@@ -1,220 +1,101 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MAXIZADEM — Menu (Premium)</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    :root{--bg:#050505;--gold-1:#d9b861;--gold-2:#b38f3a;--muted:#bdb0a0}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui;background:linear-gradient(180deg,var(--bg),#020202);color:#fff}
-    .container{max-width:1100px;margin:0 auto;padding:20px}
-    header{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--gold-1),var(--gold-2));display:grid;place-items:center;color:#050505;font-family:Playfair Display;font-weight:700;box-shadow:0 8px 30px rgba(179,143,58,0.12)}
-    h1{font-family:Playfair Display;margin:0;font-size:22px}
-    .kicker{color:var(--gold-1);letter-spacing:1px;font-weight:700}
-
-    /* Tabs */
-    .tabs{display:flex;gap:10px;margin:18px 0}
-    .tab{padding:10px 14px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);cursor:pointer;font-weight:700;color:var(--muted);display:flex;align-items:center;gap:8px;transition:transform .12s,box-shadow .12s}
-    .tab:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,0.6)}
-    .tab.active{background:linear-gradient(90deg,var(--gold-1),var(--gold-2));color:#050505;box-shadow:0 12px 30px rgba(179,143,58,0.12)}
-
-    /* Grid of cards */
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,0.015),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:transform .14s,box-shadow .14s}
-    .card:hover{transform:translateY(-8px);box-shadow:0 18px 50px rgba(0,0,0,0.6)}
-    .card img{width:100%;height:160px;object-fit:cover;display:block}
-    .card-body{padding:12px;flex:1;display:flex;flex-direction:column}
-    .row{display:flex;justify-content:space-between;align-items:center}
-    .name{font-weight:800}
-    .price{color:var(--gold-1);font-weight:800}
-    .desc{font-size:13px;color:var(--muted);margin:6px 0;flex:1}
-    .btn{padding:8px 10px;border-radius:10px;border:none;background:transparent;color:var(--muted);cursor:pointer;font-weight:700}
-    .btn.gold{background:linear-gradient(90deg,var(--gold-1),var(--gold-2));color:#050505}
-
-    /* premium gradient underline */
-    .accent-line{height:4px;border-radius:6px;background:linear-gradient(90deg,var(--gold-1),#e6d19a, var(--gold-2));margin-top:8px}
-
-    /* bottom sticky tabs on mobile */
-    .tabs-sticky{display:none}
-    @media(max-width:780px){
-      .tabs{display:none}
-      .tabs-sticky{display:flex;position:fixed;left:12px;right:12px;bottom:12px;gap:8px;padding:8px;background:linear-gradient(180deg,rgba(10,10,10,0.9),rgba(5,5,5,0.85));border-radius:12px;border:1px solid rgba(255,255,255,0.04);justify-content:space-between;z-index:1000}
-      .tabs-sticky .tab{flex:1;justify-content:center}
-      .card img{height:140px}
-      .container{padding-bottom:110px}
-    }
-
-    /* modal */
-    .modal{position:fixed;inset:0;display:grid;place-items:center;background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.85));opacity:0;pointer-events:none;transition:opacity .12s}
-    .modal.open{opacity:1;pointer-events:auto}
-    .modal .box{width:min(760px,96%);background:#0b0b0b;border-radius:12px;padding:18px;border:1px solid rgba(201,161,74,0.12);box-shadow:0 20px 60px rgba(0,0,0,0.7)}
-    .close{float:right;background:transparent;border:none;color:var(--muted);font-weight:700}
-    .meta{color:var(--muted);font-size:13px;margin-top:6px}
-    .recipe{margin-top:12px;color:var(--muted);line-height:1.5}
-
-    /* subtle animations */
-    .fade-in{animation:fadeIn .36s ease both}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mubi| Freelancer Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="brand"><div class="logo">MZ</div><div><div class="kicker">MAXIZADEM</div><h1>Premium Menu</h1></div></div>
-      <div style="color:var(--muted);font-weight:700">Black & Gold Collection</div>
-    </header>
 
-    <!-- QR CODE (real link to your domain) -->
-    <div style="position:absolute; top:18px; right:18px; text-align:center; font-size:11px; color:var(--muted)">
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=96x96&data=https://menu.maxizadem.uz" style="width:96px;height:96px;border-radius:8px;box-shadow:0 8px 20px rgba(0,0,0,0.6)" alt="QR" />
-      <div style="margin-top:6px">menu.maxizadem.uz</div>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">Mubi <span>Freelancer</span></div>
+    <nav>
+      <ul>
+        <li><a href="#about">Men haqimda</a></li>
+        <li><a href="#portfolio">Portfel</a></li>
+        <li><a href="#skills">Ko‘nikmalar</a></li>
+        <li><a href="#contact">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Salom, men <span>Mubina</span></h1>
+      <h2>Freelancer — Dasturchi / Dizayner / Video Editor</h2>
+      <p>Yaratuvchanlik va texnologiyani uyg‘unlashtirib, mukammal natijalar taqdim etaman.</p>
+      <a href="#portfolio" class="btn">Ishlarimni ko‘rish</a>
     </div>
-
-    <!-- Tabs desktop -->
-    <div class="tabs" role="tablist" aria-label="Menu categories">
-      <div class="tab active" data-tab="birinchi">Birinchi <span style="margin-left:6px">➕</span></div>
-      <div class="tab" data-tab="ikkinchi">Ikkinchi <span style="margin-left:6px">➕</span></div>
-      <div class="tab" data-tab="ichimlik">Ichimlik <span style="margin-left:6px">➕</span></div>
-      <div class="tab" data-tab="desert">Desert <span style="margin-left:6px">➕</span></div>
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=800&q=80" alt="Freelancer">
     </div>
+  </section>
 
-    <!-- panels (rendered by JS) -->
-    <main id="panels" class="fade-in"></main>
-
-    <!-- sticky tabs for mobile -->
-    <div class="tabs-sticky" aria-hidden="false">
-      <div class="tab active" data-tab="birinchi">Birinchi</div>
-      <div class="tab" data-tab="ikkinchi">Ikkinchi</div>
-      <div class="tab" data-tab="ichimlik">Ichimlik</div>
-      <div class="tab" data-tab="desert">Desert</div>
+  <!-- About Section -->
+  <section id="about" class="section about">
+    <h2>Men haqimda</h2>
+    <div class="about-content">
+      <img src="https://avatars.mds.yandex.net/i?id=bfdcef3e5d9ece38d98cf771a7b278426bb29787-5479741-images-thumbs&n=13" alt="About Mubina">
+      <div>
+        <p>Men raqamli dizayn, veb-dasturlash va video montaj yo‘nalishida tajribali freelancer sifatida ishlayman. Har bir loyiha mening ijodimni aks ettiradi.</p>
+        <p>4+ yillik tajriba davomida ko‘plab mijozlar bilan muvaffaqiyatli loyihalar olib borganman. Mening maqsadim — sizning g‘oyangizni jonlantirish!</p>
+      </div>
     </div>
+  </section>
 
-    <!-- simple cart summary -->
-    <div id="cart" style="position:fixed;right:18px;bottom:140px;background:linear-gradient(180deg,#0e0e0e,#070707);padding:12px;border-radius:12px;border:1px solid rgba(201,161,74,0.12);width:280px;color:var(--muted)">
-      <div style="font-weight:800;color:var(--gold-1)">Savatcha</div>
-      <div id="cart-items" style="max-height:180px;overflow:auto;margin-top:8px"></div>
-      <div style="margin-top:8px;display:flex;justify-content:space-between"><div>Jami</div><div id="total">$0.00</div></div>
-      <div style="margin-top:10px;text-align:right"><button class="btn" onclick="clearCart()">Tozalash</button> <button class="btn gold" onclick="checkout()">Buyurtma</button></div>
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="section portfolio">
+    <h2>Ishlar Portfeli</h2>
+    <div class="portfolio-grid">
+      <img src="https://images.unsplash.com/photo-1593642532973-d31b6557fa68?auto=format&fit=crop&w=600&q=80" alt="">
+      <img src="https://avatars.mds.yandex.net/i?id=0da815dbf8a71b0251ec7c1233c1459f0e8416a5-5254493-images-thumbs&n=13" alt="">
+      <img src="https://avatars.mds.yandex.net/i?id=e572f9f268bca8804ed5b3ac1e25a3543d6a0285-5233588-images-thumbs&n=13" alt="">
+      <img src="https://avatars.mds.yandex.net/i?id=f6b816253979a2443d93de94f237e768878d41d8-5288364-images-thumbs&n=13" alt="">
+     </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section skills">
+    <h2>Ko‘nikmalar</h2>
+    <div class="skills-container">
+      <div class="skill">
+        <h3>Web Development</h3>
+        <div class="bar"><span style="width: 90%;"></span></div>
+      </div>
+      <div class="skill">
+        <h3>UI/UX Dizayn</h3>
+        <div class="bar"><span style="width: 80%;"></span></div>
+      </div>
+      <div class="skill">
+        <h3>Video Editing</h3>
+        <div class="bar"><span style="width: 75%;"></span></div>
+      </div>
+      <div class="skill">
+        <h3>Photography</h3>
+        <div class="bar"><span style="width: 85%;"></span></div>
+      </div>
     </div>
+  </section>
 
-  </div>
+  <!-- Contact Section -->
+  <section id="contact" class="section contact">
+    <h2>Kontakt</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Ismingiz" required>
+      <input type="email" placeholder="Email manzilingiz" required>
+      <textarea placeholder="Xabaringizni yozing..." required></textarea>
+      <button type="submit" class="btn">Yuborish</button>
+    </form>
+  </section>
 
-  <!-- modal -->
-  <div id="modal" class="modal" onclick="closeModal(event)">
-    <div class="box" role="dialog" aria-modal="true" onclick="event.stopPropagation()">
-      <button class="close" onclick="closeModal()">Yopish ✕</button>
-      <h3 id="m-title" style="margin-top:6px;color:var(--gold-1)"></h3>
-      <div class="meta" id="m-meta"></div>
-      <div class="recipe" id="m-recipe"></div>
-    </div>
-  </div>
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Mubi Freelancer | Barcha huquqlar himoyalangan.</p>
+  </footer>
 
-  <script>
-    // Dishes data (realistic recipes, calories, prep time)
-    const MENU = {
-      birinchi: [
-        {name:'Lavha salatasi', price:12, img:'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop', desc:'Yangi sabzavotlar, yengil vinaigrette', kcal:220, time:'10 min', recipe:["200g aralash salat barglari","50g pomidor, tilimlangan","30g bodring, tilimlangan","Zaytun moyi 1 osh qoshiq","Limon sharbati 1 choy qoshiq","Tuz va murch — ta'bga ko'ra"]},
-        {name:'Klassik shorva', price:8, img:'https://images.unsplash.com/photo-1543353071-087092ec393f?q=80&w=800&auto=format&fit=crop', desc:'Issiq, to'yingan bulon bilan', kcal:180, time:'25 min', recipe:["1L mol yoki sabzavot buloni","100g sabzavot (piyoz, sabzi)","50g guruch yoki noodle","Tuz, murch, ziravorlar"]},
-        {name:'Qovoq carpaccio', price:11, img:'https://images.unsplash.com/photo-1523986371872-9d3ba2e2f642?q=80&w=800&auto=format&fit=crop', desc:'Yengil va samarali boshlovchi', kcal:140, time:'12 min', recipe:["200g qovoq, juda yupqa tilimlangan","Parmezan 10g","Zaytun moyi, limon va zira"]},
-        {name:'Smoked salmon bite', price:14, img:'https://images.unsplash.com/photo-1544025162-7b3d5f3b9c1f?q=80&w=800&auto=format&fit=crop', desc:'Tuzlangan losos, krem pishloq', kcal:150, time:'8 min', recipe:["50g smoked salmon","15g krem pishloq","Kichik baget bo'lagi"]},
-        {name:'Pomidor bruschetta', price:9, img:'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop', desc:'Jo'shqin pomidor va basil', kcal:170, time:'10 min', recipe:["2 pomidor, mayda to'g'ralgan","1 chimdgan tuz","Basil barglari","Baguette zuwa bo'laklari"]},
-        {name:'Qovurilgan baklajan', price:10, img:'https://images.unsplash.com/photo-1498579809087-ef1e558fd1b5?q=80&w=800&auto=format&fit=crop', desc:'Sirli ziravorli smetana bilan', kcal:200, time:'18 min', recipe:["1 o'rtacha baklajan","2 osh qoshiq zaytun moyi","Yog'och bilan pishirilgan sos"]},
-        {name:'Issiq non va sous', price:6, img:'https://images.unsplash.com/photo-1559563459-0c6b9b2b4f6e?q=80&w=800&auto=format&fit=crop', desc:'Yangi pishirilgan non, maxsus sous', kcal:260, time:'6 min', recipe:["Bitta non bo'lagi","Sos: zaytun moyi, sarimsoq, tuz"]},
-        {name:'Kichik mezze plate', price:13, img:'https://images.unsplash.com/photo-1544025163-1b5c9a1f8c63?q=80&w=800&auto=format&fit=crop', desc:'Hummus, tzatziki va olma', kcal:320, time:'10 min', recipe:["Hummus 60g","Tzatziki 50g","Marinated olives 30g","Non bo'laklari"]}
-      ],
-      ikkinchi: [
-        {name:'Qovurilgan tovuq', price:16, img:'https://images.unsplash.com/photo-1604908554022-6f6a6f0b8f8d?q=80&w=800&auto=format&fit=crop', desc:'Xamirli qirqilgan, ikkilamchi sous bilan', kcal:520, time:'30 min', recipe:["250g tovuq file","1 stakan un, 1 tuxum","Panada qovurish","Sous: mayonez+sos%"]},
-        {name:'Beshbarmoq pilov', price:18, img:'https://images.unsplash.com/photo-1605902711622-cfb43c44367f?q=80&w=800&auto=format&fit=crop', desc:'A'lo darajada tuzlangan guruch va go'sht', kcal:760, time:'90 min', recipe:["300g guruch","250g mol go'shti","Ziravorlar: zira, qo'ziqorin, piyoz"]},
-        {name:'Lamb shashlik', price:22, img:'https://images.unsplash.com/photo-1562967916-eb82221dfb36?q=80&w=800&auto=format&fit=crop', desc:'Marinado va chargrill', kcal:640, time:'45 min', recipe:["200g qo'y go'shti","Marinad: yogurt va ziravorlar","Grilda pishirish 12-15 min"]},
-        {name:'Steyk Maxizadem', price:28, img:'https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=800&auto=format&fit=crop', desc:'Murakkab marinad, qovurilgan sabzavotlar bilan', kcal:820, time:'35 min', recipe:["250g steak","Marinad: asal va sarimsoq","Qovurilgan sabzavotlar bilan xizmat qilinadi"]},
-        {name:'Okroshka'ga klassik', price:12, img:'https://images.unsplash.com/photo-1543353071-087092ec393f?q=80&w=800&auto=format&fit=crop', desc:'Sovuq yozgi sho'rva', kcal:200, time:'20 min', recipe:["Kefir 300ml","Bodring, kartoshka, tuxum","Dilimlangan sosiskalar"]},
-        {name:'Guruch bilan sabzavotlar', price:14, img:'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop', desc:'Vegeterian variant', kcal:430, time:'30 min', recipe:["Guruch 200g","Aralash sabzavotlar 150g","Soya sousi"]},
-        {name:'Limonli salmon', price:24, img:'https://images.unsplash.com/photo-1544025162-7b3d5f3b9c1f?q=80&w=800&auto=format&fit=crop', desc:'Sitrus marinad bilan pishirilgan', kcal:410, time:'22 min', recipe:["200g salmon filе","Limon sharbati, zaytun moyi","Dilimlangan limon bilan bezash"]},
-        {name:'Kartoshka duch', price:9, img:'https://images.unsplash.com/photo-1498579809087-ef1e558fd1b5?q=80&w=800&auto=format&fit=crop', desc:'Kremli kartoshka va pishloq', kcal:360, time:'40 min', recipe:["400g kartoshka","Sut va sariyog'","Pishloq 50g"]}
-      ],
-      ichimlik: [
-        {name:'Anor-limonad', price:6, img:'https://images.unsplash.com/photo-1550258987-190a2d41a8ba?q=80&w=800&auto=format&fit=crop', desc:'Yangi limon, anor siropi', kcal:120, time:'5 min', recipe:["200ml suv","Limon sharbati 30ml","Anor siropi 20ml","Muz va bezak"]},
-        {name:'Classic Moxito', price:7, img:'https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=800&auto=format&fit=crop', desc:'Yangi nan, limon, soda', kcal:90, time:'6 min', recipe:["20g yangi nan","Limon 1 dona","Soda 100ml","Shakar yoki sirop 10ml"]},
-        {name:'Zira choyi', price:4, img:'https://images.unsplash.com/photo-1523986371872-9d3ba2e2f642?q=80&w=800&auto=format&fit=crop', desc:'Issiq, aromatik zira choyi', kcal:5, time:'6 min', recipe:["200ml suv","Zira 1 choy qoshiq","Shakar — ixtiyoriy"]},
-        {name:'Yashil choy latte', price:5, img:'https://images.unsplash.com/photo-1516035069371-29a1d0d5ecf2?q=80&w=800&auto=format&fit=crop', desc:'Matcha va sut', kcal:110, time:'8 min', recipe:["Matcha 1 choy qoshiq","Sut 200ml","Asal 1 choy qoshiq"]},
-        {name:'Kofe Maxizadem', price:5, img:'https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=800&auto=format&fit=crop', desc:'Espresso asosida maxsus retsept', kcal:70, time:'6 min', recipe:["30ml espresso","20ml sut köpigi","Shakar — ixtiyoriy"]},
-        {name:'Sovuq choy mevali', price:5, img:'https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop', desc:'Yengil va mevali', kcal:95, time:'5 min', recipe:["Suv 200ml","Meva siropi 20ml","Muz bo'laklari"]},
-        {name:'Klassik limonad', price:5, img:'https://images.unsplash.com/photo-1464965911861-746a04b4bca6?q=80&w=800&auto=format&fit=crop', desc:'Anʼanaviy limonad', kcal:110, time:'5 min', recipe:["Limon sharbati 30ml","Shakar 15g","Suv 200ml"]},
-        {name:'Detox smoothie', price:8, img:'https://images.unsplash.com/photo-1524594154902-3f2f6d8b1f0f?q=80&w=800&auto=format&fit=crop', desc:'Foydali meva va sabzavot aralashmasi', kcal:180, time:'7 min', recipe:["1 banan","50g ismaloq","200ml sut yoki suv","Asal — ixtiyoriy"]}
-      ],
-      desert: [
-        {name:'Shokoladli lava', price:9, img:'https://images.unsplash.com/photo-1604908177522-1d97a8b2f9d0?q=80&w=800&auto=format&fit=crop', desc:'Issiq shokolad, markazida lava', kcal:420, time:'18 min', recipe:["100g qoramtish shokolad","50g sariyog'","2 tuxum","40g shakar","20g un"]},
-        {name:'Vanil pannacotta', price:8, img:'https://images.unsplash.com/photo-1523986371872-9d3ba2e2f642?q=80&w=800&auto=format&fit=crop', desc:'Noyob va yumshoq', kcal:260, time:'4 hour (set)', recipe:["200ml qaymoq","10g shakar","1 vanil pastasi","Gelatin 5g"]},
-        {name:'Mevali tart', price:7, img:'https://images.unsplash.com/photo-1495195134817-aeb325a55b65?q=80&w=800&auto=format&fit=crop', desc:'Yangi mevalar bilan tart', kcal:330, time:'40 min', recipe:["Tort xamir 120g","Mevalar 100g","Krem pishloq 50g"]},
-        {name:'Karamelised apple', price:7, img:'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=800&auto=format&fit=crop', desc:'Issiq karamelli olma', kcal:290, time:'25 min', recipe:["2 olma","Karamel 50g","Sariyog' 10g"]},
-        {name:'Cheesecake bite', price:6, img:'https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=800&auto=format&fit=crop', desc:'Kichik porsiya cheesecake', kcal:350, time:'3 hour (set)', recipe:["200g pishloq","100g biskvit qobig'i","Shakar 40g"]},
-        {name:'Shirin crepe', price:5, img:'https://images.unsplash.com/photo-1523986371872-9d3ba2e2f642?q=80&w=800&auto=format&fit=crop', desc:'Yumshoq crepe va mevalar', kcal:240, time:'20 min', recipe:["Crepe xamir","Mevalar va syrup","Yog'och bilan bezak"]},
-        {name:'Chocolate mousse', price:6, img:'https://images.unsplash.com/photo-1505250469679-203ad9ced0cb?q=80&w=800&auto=format&fit=crop', desc:'Yengil va havodor', kcal:310, time:'30 min', recipe:["Shokolad 100g","Krem 100ml","Tuxum oqi 1 dona"]},
-        {name:'Mini tartlets', price:5, img:'https://images.unsplash.com/photo-1506086679524-1f8a7c2f3b0f?q=80&w=800&auto=format&fit=crop', desc:'Kichik tartlet assorti', kcal:200, time:'35 min', recipe:["Mini xamir","Turli krem va mevalar","Biskvit qobig'i"]}
-      ]
-    }
-
-    // Render panels
-    const panels = document.getElementById('panels')
-    function renderCategory(key){
-      const items = MENU[key]
-      const html = `<section id="${key}" class="tab-panel"><div class="grid">${items.map(it=>`
-        <article class="card">
-          <img src="${it.img}&auto=format&fit=crop" alt="${it.name}">
-          <div class="card-body">
-            <div class="row"><div class="name">${it.name}</div><div class="price">$${it.price}</div></div>
-            <div class="desc">${it.desc}</div>
-            <div style="margin-top:8px;display:flex;gap:8px"><button class="btn" onclick="openModal('${escapeHtml(it.name)}')">Tarkibi <span style="margin-left:6px">➕</span></button><button class="btn gold" onclick="addToCart('${escapeHtml(it.name)}')">Zakaz</button></div>
-            <div class="accent-line"></div>
-          </div>
-        </article>
-      `).join('')}</div></section>`
-      panels.innerHTML = html
-    }
-
-    // escape helper
-    function escapeHtml(s){ return s.replace(/'/g,"\'").replace(/"/g,'\"') }
-
-    // Tab switching
-    function selectTab(name){
-      document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active', t.getAttribute('data-tab')===name));
-      renderCategory(name)
-      // mobile sticky
-      document.querySelectorAll('.tabs-sticky .tab').forEach(t=>t.classList.toggle('active', t.getAttribute('data-tab')===name));
-      // scroll to top of panels
-      window.scrollTo({top:0,behavior:'smooth'})
-    }
-    document.querySelectorAll('.tabs .tab').forEach(t=>t.addEventListener('click', ()=> selectTab(t.getAttribute('data-tab'))));
-    document.querySelectorAll('.tabs-sticky .tab').forEach(t=>t.addEventListener('click', ()=> selectTab(t.getAttribute('data-tab'))));
-
-    // Modal open by name — shows recipe, kcal, time
-    function openModal(name){
-      // find dish
-      const all = [...MENU.birinchi,...MENU.ikkinchi,...MENU.ichimlik,...MENU.desert]
-      const dish = all.find(d => d.name===name)
-      if(!dish) return
-      document.getElementById('m-title').textContent = dish.name
-      document.getElementById('m-meta').textContent = `Kaloriya: ${dish.kcal} kcal • Tayyorlanish: ${dish.time}`
-      document.getElementById('m-recipe').innerHTML = '<ol>' + dish.recipe.map(s=>`<li>${s}</li>`).join('') + '</ol>'
-      document.getElementById('modal').classList.add('open')
-    }
-    function closeModal(e){ if(!e) document.getElementById('modal').classList.remove('open'); else if(e.target===document.getElementById('modal')) document.getElementById('modal').classList.remove('open') }
-
-    // Cart
-    let cart = []
-    function addToCart(name){ const all = [...MENU.birinchi,...MENU.ikkinchi,...MENU.ichimlik,...MENU.desert]; const dish = all.find(d=>d.name===name); if(!dish) return; const existing = cart.find(i=>i.name===name); if(existing) existing.qty++; else cart.push({name:dish.name, price:dish.price, qty:1}); renderCart() }
-    function renderCart(){ const el = document.getElementById('cart-items'); el.innerHTML=''; let total=0; cart.forEach((it,idx)=>{ const div=document.createElement('div'); div.style.display='flex'; div.style.justifyContent='space-between'; div.style.marginBottom='6px'; div.innerHTML = `<div>${it.name} x${it.qty}</div><div>$${(it.price*it.qty).toFixed(2)} <button style="margin-left:8px" onclick="remove(${idx})">−</button></div>`; el.appendChild(div); total+=it.price*it.qty }); document.getElementById('total').textContent = '$'+total.toFixed(2) }
-    function remove(i){ cart.splice(i,1); renderCart() }
-    function clearCart(){ cart=[]; renderCart() }
-    function checkout(){ if(cart.length===0){ alert('Savatcha bo\'sh — iltimos taom tanlang'); return } const order = {items:cart, total: cart.reduce((s,i)=>s+i.price*i.qty,0)}; const summary = encodeURIComponent(JSON.stringify(order)); const url = 'https://menu.maxizadem.uz/checkout#order=' + summary; const qr = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(url); const w = window.open('','_blank'); const html = `<!doctype html><html><body style="background:#000;color:#fff;font-family:Inter;padding:24px"><h2>Buyurtma</h2><pre style="color:#ccc">${JSON.stringify(order,null,2)}</pre><div><img src="${qr}" alt="qr"></div><p>QR ni skaner qilib yuboring yoki bizga email orqali yuboring: orders@maxizadem.uz</p></body></html>`; w.document.write(html); w.document.title='Buyurtma — MAXIZADEM' }
-
-    // init
-    selectTab('birinchi')
-    document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal() })
-  </script>
 </body>
 </html>
